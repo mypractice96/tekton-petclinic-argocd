@@ -1,0 +1,28 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: petclinic-app
+  namespace: pipelines
+  finalizers:
+    - foregroundDeletion
+  labels:
+    app.kubernetes.io/instance: java-spring-petclinic
+spec:
+  host: petclinic-app-pipelines.apps.enentodemocluster.janus.com
+  to:
+    kind: Service
+    name: petclinic-service
+    weight: 100
+  port:
+    targetPort: 8080
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: petclinic-app-pipelines.apps.enentodemocluster.janus.com
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2021-09-28T13:31:37Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: router-default.apps.enentodemocluster.janus.com
