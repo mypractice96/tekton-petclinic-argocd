@@ -1,0 +1,12 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: petclinic-app
+  namespace: pipelines
+spec:
+  path: /
+  to:
+    kind: Service
+    name: petclinic-service
+  port:
+    targetPort: 80
