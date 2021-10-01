@@ -16,6 +16,6 @@ spec:
       containers:
         - name: petclinic
           image: >-
-            image-registry.openshift-image-registry.svc:5000/pipelines/petclinic:v6
+            image-registry.openshift-image-registry.svc:5000/pipelines/petclinic:v7
           ports:
             - containerPort: 8080
